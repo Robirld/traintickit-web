@@ -1,0 +1,93 @@
+.main-panal {
+  margin: 0;
+  border: solid 0.0625rem #42B983;
+  border-radius: 0.8rem;
+  min-height: 10rem;
+}
+
+.logo-img {
+  width: 7rem;
+}
+
+.form-item {
+  margin: 1.5rem auto;
+  color: black;
+  font-size: 1.1rem;
+}
+
+.input-login {
+  width: 13rem;
+  height: 1.8rem;
+  border: solid 0.01rem dimgrey;
+  border-radius: 0.3rem;
+  padding: 0 0.5rem;
+  color: #2C3E50;
+  margin: 0;
+}
+.input-login:focus {
+  outline: none;
+  border: solid 0.01rem #42B983;
+}
+
+.panel-head {
+  text-align: center;
+  margin: 1rem;
+}
+
+.rignt-asign {
+  text-align: right;
+}
+
+.btn {
+  display: inline-block;
+  margin: 0.5rem auto;
+  border: solid 1px slategray;
+  border-radius: 0.8rem;
+  min-width: 5rem;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-middle{
+  line-height: 1.8rem;
+  font-size: 1.1rem;
+}
+
+.btn-primary {
+  background-color: #42B983;
+}
+
+.btn-primary:hover{
+  background-color: #007BFF;
+}
+
+.nav-li{
+  display: inline-flex;
+  padding: 0;
+  font-size: 1rem;
+  color: #1c18cc;
+}
+
+.nav-li:hover{
+  cursor: pointer;
+  color: #fadf0c;
+}
+
+.seleted{
+  color: #fadf0c;
+  pointer-events: none;
+}
+
+.nav-li a{
+  display: block;
+  padding: 0 1rem;
+}
+
+.nav-ul{
+  margin: 0;
+  padding: 0.5rem;
+  font-size: 0;
+  background-color: darkgrey;
+}
