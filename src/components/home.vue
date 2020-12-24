@@ -127,7 +127,7 @@
           </div>
           <div class="form-group left-25">
             <label for="passenger" class="control-label">选择乘客：</label>
-            <select id="passenger" class="border-secondary">
+            <select id="passenger" class="border-secondary" v-model="passenger">
               <option value="-1">姓名-身份证号-手机号</option>
               <option v-for="p in passengers" :value="p">{{p.name}}-{{p.id_num}}-{{p.phone}}</option>
             </select>
@@ -138,7 +138,7 @@
             <span id="price">软座-100, 硬座-50</span>
           </div>
           <div class="text-center">
-            <span class="btn btn-sm btn-primary">提交</span>
+            <span class="btn btn-sm btn-primary" @click="submitOrder()">提交</span>
           </div>
         </div>
       </div>
@@ -162,13 +162,43 @@
         selectTrain:{},
         showTT: false,
         bookTrain:null,
-        passengers:null
+        passengers:null,
+        passenger:-1
       }
     },
     created() {
       this.init();
     },
     methods:{
+      submitOrder(){
+        if(this.bookTrain == null){
+          alert("请选择车次");
+          return;
+        }
+        if(this.passenger == null || this.passenger == -1){
+          alert("请选择乘客");
+          return;
+        }
+        this.$ajax({
+          method: 'post',
+          url: '/order/upload',
+          data: {
+            bookTrain: this.bookTrain,
+            passenger: this.passenger
+          }
+        }).then(res => {
+          if(res.data.code == 200){
+            this.passengers = res.data.data;
+          }else if(res.data.code == 401){
+            removeToken();
+            this.$router.push('/login');
+          }else{
+            alert(res.data.msg);
+          }
+        }).catch(e => {
+          console.log(e);
+        });
+      },
       getPassengers(){
         this.$ajax({
           method: 'post',
@@ -183,7 +213,9 @@
           }else{
             alert(res.data.msg);
           }
-        })
+        }).catch(e => {
+          console.log(e);
+        });
       },
       book(ctrain){
         this.bookTrain = ctrain;

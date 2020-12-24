@@ -38,7 +38,7 @@
   text-align: right;
 }
 
-.btn {
+.btn2 {
   display: inline-block;
   margin: 0.5rem auto;
   border: solid 1px slategray;
@@ -50,17 +50,21 @@
   text-align: center;
 }
 
-.btn-middle{
+.btn-middle2{
   line-height: 1.8rem;
   font-size: 1.1rem;
 }
 
-.btn-primary {
+.btn-primary2 {
   background-color: #42B983;
 }
 
-.btn-primary:hover{
+.btn-primary2:hover{
   background-color: #007BFF;
+}
+
+.btn-success2:hover{
+  background-color: green;
 }
 
 .nav-li{
