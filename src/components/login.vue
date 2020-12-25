@@ -14,8 +14,8 @@
       </div>
       <div class="form-item">
         <input type="checkbox" v-model="rememberMe" value="true"/><span style="font-size: 1rem;">记住我</span><br />
-        <a class="btn btn-primary btn-login" @click="login">登陆</a><br />
-        <a class="btn btn-success btn-login" @click="signUp">注册</a>
+        <a class="btn2 btn-primary2 btn-login" @click="login">登陆</a><br />
+        <a class="btn2 btn-success2 btn-login" @click="signUp">注册</a>
       </div>
     </form>
   </div>
@@ -92,9 +92,5 @@ export default {
   width: 55%;
   height: 2rem;
   line-height: 2rem;
-}
-
-.btn-success:hover{
-  background-color: green;
 }
 </style>

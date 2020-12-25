@@ -32,8 +32,8 @@
       </div>
 
       <div class="form-item" style="text-align: center;">
-        <a class="btn btn-primary btn-middle" style="margin-right: 1rem;" @click="submit">提交</a>
-        <a class="btn btn-success btn-middle" @click="back">返回</a>
+        <a class="btn2 btn-primary2 btn-middle2" style="margin-right: 1rem;" @click="submit">提交</a>
+        <a class="btn2 btn-success2 btn-middle2" @click="back">返回</a>
       </div>
     </form>
   </div>
