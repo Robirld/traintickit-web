@@ -7,7 +7,7 @@ import tajax from './tajax'
 import store from './store'
 import './utils'
 import navheader from '@/components/navheader'
-import StringUtil from '@/assets/js/stringUtil'
+import dateUtils from './utils/dateUtils'
 
 Vue.component('navheader',navheader)
 
@@ -15,17 +15,7 @@ Vue.config.productionTip = false
 Vue.prototype.$ajax=tajax
 
 Vue.filter('dateFormat', function(dateTime){
-  if(dateTime == null){
-    return '--';
-  }
-  var dt = new Date(Date.parse(dateTime));
-  var y = dt.getUTCFullYear();
-  var M = StringUtil.formatIntString(2, dt.getUTCMonth() + 1);
-  var d = StringUtil.formatIntString(2, dt.getUTCDate());
-  var h = StringUtil.formatIntString(2, dt.getUTCHours());
-  var m = StringUtil.formatIntString(2, dt.getUTCMinutes());
-  var s = StringUtil.formatIntString(2, dt.getUTCSeconds());
-  return y+'/'+M+'/'+d+' '+h+':'+m+':'+s;
+  return dateUtils.dateFormat('/', dateTime);
 });
 
 /* eslint-disable no-new */

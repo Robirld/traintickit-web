@@ -149,7 +149,8 @@
 <script>
   import Cookies from 'js-cookie'
   import StringUtil from '../assets/js/stringUtil'
-  import { removeToken } from '@/utils/cookie'
+  import { removeToken } from '../utils/cookie'
+  import dateUtils from '../utils/dateUtils'
   export default {
     name: 'home',
     data() {
@@ -183,12 +184,16 @@
           method: 'post',
           url: '/order/upload',
           data: {
-            bookTrain: this.bookTrain,
-            passenger: this.passenger
+            passenger_id: this.passenger.id,
+            train_number: this.bookTrain.number,
+            leave_station_id: this.bookTrain.leaveStation.id,
+            arrive_station_id: this.bookTrain.arriveStation.id,
+            leave_time: dateUtils.dateFormat('-',this.bookTrain.leaveTime),
+            arrive_time: dateUtils.dateFormat('-',this.bookTrain.arriveTime)
           }
         }).then(res => {
           if(res.data.code == 200){
-            this.passengers = res.data.data;
+            alert("提交成功，点击确定转到订单页面");
           }else if(res.data.code == 401){
             removeToken();
             this.$router.push('/login');
