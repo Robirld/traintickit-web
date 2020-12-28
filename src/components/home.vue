@@ -138,7 +138,7 @@
             <span id="price">软座-100, 硬座-50</span>
           </div>
           <div class="text-center">
-            <span class="btn btn-sm btn-primary" @click="submitOrder()">提交</span>
+            <span class="btn btn-sm btn-primary" :class="isDisabled ? 'disabled-c':''" @click="submitOrder()">提交</span>
           </div>
         </div>
       </div>
@@ -164,7 +164,8 @@
         showTT: false,
         bookTrain:null,
         passengers:null,
-        passenger:-1
+        passenger:-1,
+        isDisabled: false
       }
     },
     created() {
@@ -172,6 +173,7 @@
     },
     methods:{
       submitOrder(){
+        this.isDisabled = true;
         if(this.bookTrain == null){
           alert("请选择车次");
           return;
@@ -199,9 +201,11 @@
             this.$router.push('/login');
           }else{
             alert(res.data.msg);
+            this.isDisabled = false;
           }
         }).catch(e => {
           console.log(e);
+          this.isDisabled = false;
         });
       },
       getPassengers(){
@@ -234,6 +238,8 @@
         if(element === 'book'){
           this.bookTrain = null;
           this.passengers = null;
+          this.passenger = null;
+          this.isDisabled = false;
         }
       },
       getTimeTable(ctrain){
