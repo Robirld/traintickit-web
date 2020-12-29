@@ -169,6 +169,7 @@
       }
     },
     created() {
+      this.$store.commit('setIndex', 1);
       this.init();
     },
     methods:{
@@ -182,7 +183,7 @@
           alert("请选择乘客");
           return;
         }
-        this.$ajax({
+        this.$odjax({
           method: 'post',
           url: '/order/upload',
           data: {
@@ -196,6 +197,8 @@
         }).then(res => {
           if(res.data.code == 200){
             alert("提交成功，点击确定转到订单页面");
+            this.$store.commit('setIndex', 2);
+            this.$router.push('/order');
           }else if(res.data.code == 401){
             removeToken();
             this.$router.push('/login');

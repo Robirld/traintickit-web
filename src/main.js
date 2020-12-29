@@ -9,10 +9,11 @@ import './utils'
 import navheader from '@/components/navheader'
 import dateUtils from './utils/dateUtils'
 
-Vue.component('navheader',navheader)
+Vue.component('navheader',navheader);
 
-Vue.config.productionTip = false
-Vue.prototype.$ajax=tajax
+Vue.config.productionTip = false;
+Vue.prototype.$ajax=tajax('ls', 'http://127.0.0.1:1236/');
+Vue.prototype.$odjax=tajax('od', 'http://127.0.0.1:1238/');
 
 Vue.filter('dateFormat', function(dateTime){
   return dateUtils.dateFormat('/', dateTime);

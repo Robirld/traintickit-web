@@ -51,3 +51,11 @@
   border-color: dimgray;
   pointer-events: none;
 }
+
+.text-size-0{
+  font-size: 0;
+}
+
+.text-size-1{
+  font-size: 1rem;
+}
