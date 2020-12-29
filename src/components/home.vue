@@ -238,7 +238,7 @@
         if(element === 'book'){
           this.bookTrain = null;
           this.passengers = null;
-          this.passenger = null;
+          this.passenger = -1;
           this.isDisabled = false;
         }
       },
