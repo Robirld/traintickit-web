@@ -138,7 +138,7 @@
             <span id="price">软座-100, 硬座-50</span>
           </div>
           <div class="text-center">
-            <span class="btn btn-sm btn-primary" @click="submitOrder()">提交</span>
+            <span class="btn btn-sm btn-primary" :class="isDisabled ? 'disabled-c':''" @click="submitOrder()">提交</span>
           </div>
         </div>
       </div>
@@ -149,7 +149,8 @@
 <script>
   import Cookies from 'js-cookie'
   import StringUtil from '../assets/js/stringUtil'
-  import { removeToken } from '@/utils/cookie'
+  import { removeToken } from '../utils/cookie'
+  import dateUtils from '../utils/dateUtils'
   export default {
     name: 'home',
     data() {
@@ -163,14 +164,17 @@
         showTT: false,
         bookTrain:null,
         passengers:null,
-        passenger:-1
+        passenger:-1,
+        isDisabled: false
       }
     },
     created() {
+      this.$store.commit('setIndex', 1);
       this.init();
     },
     methods:{
       submitOrder(){
+        this.isDisabled = true;
         if(this.bookTrain == null){
           alert("请选择车次");
           return;
@@ -179,24 +183,32 @@
           alert("请选择乘客");
           return;
         }
-        this.$ajax({
+        this.$odjax({
           method: 'post',
           url: '/order/upload',
           data: {
-            bookTrain: this.bookTrain,
-            passenger: this.passenger
+            passenger_id: this.passenger.id,
+            train_number: this.bookTrain.number,
+            leave_station_id: this.bookTrain.leaveStation.id,
+            arrive_station_id: this.bookTrain.arriveStation.id,
+            leave_time: dateUtils.dateFormat('-',this.bookTrain.leaveTime),
+            arrive_time: dateUtils.dateFormat('-',this.bookTrain.arriveTime)
           }
         }).then(res => {
           if(res.data.code == 200){
-            this.passengers = res.data.data;
+            alert("提交成功，点击确定转到订单页面");
+            this.$store.commit('setIndex', 2);
+            this.$router.push('/order');
           }else if(res.data.code == 401){
             removeToken();
             this.$router.push('/login');
           }else{
             alert(res.data.msg);
+            this.isDisabled = false;
           }
         }).catch(e => {
           console.log(e);
+          this.isDisabled = false;
         });
       },
       getPassengers(){
@@ -229,6 +241,8 @@
         if(element === 'book'){
           this.bookTrain = null;
           this.passengers = null;
+          this.passenger = -1;
+          this.isDisabled = false;
         }
       },
       getTimeTable(ctrain){

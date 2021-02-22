@@ -5,6 +5,7 @@ import login from '@/components/login'
 import signUp from '@/components/signUp'
 import home from '@/components/home'
 import userinfo from '@/components/userinfo'
+import order from '@/components/order'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/userinfo',
       name: 'userinfo',
       component: userinfo
+    },
+    {
+      path: '/order',
+      name: 'order',
+      component: order
     }
   ]
 })

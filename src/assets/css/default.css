@@ -70,17 +70,19 @@
 .nav-li{
   display: inline-flex;
   padding: 0;
-  font-size: 1rem;
-  color: #1c18cc;
+  font-size: 1.1rem;
+  color: #dddddd;
 }
 
 .nav-li:hover{
   cursor: pointer;
-  color: #fadf0c;
+  color: #FFFFFF;
+  font-weight: bold;
 }
 
 .seleted{
-  color: #fadf0c;
+  color: #FFFFFF;
+  font-weight: bolder;
   pointer-events: none;
 }
 
@@ -93,5 +95,9 @@
   margin: 0;
   padding: 0.5rem;
   font-size: 0;
-  background-color: darkgrey;
+  background-color: royalblue;
+}
+
+.right-1{
+  margin-right: 1rem;
 }

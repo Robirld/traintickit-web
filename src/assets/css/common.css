@@ -45,3 +45,17 @@
 .left-25{
   margin-left: 25%;
 }
+
+.disabled-c{
+  background-color: gray !important;
+  border-color: dimgray;
+  pointer-events: none;
+}
+
+.text-size-0{
+  font-size: 0;
+}
+
+.text-size-1{
+  font-size: 1rem;
+}
